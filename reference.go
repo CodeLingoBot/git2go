@@ -384,7 +384,7 @@ func (repo *Repository) NewReferenceIterator() (*ReferenceIterator, error) {
 	return newReferenceIteratorFromC(ptr, repo), nil
 }
 
-// NewReferenceIterator creates a new branch iterator over reference names
+// NewReferenceNameIterator creates a new branch iterator over reference names
 func (repo *Repository) NewReferenceNameIterator() (*ReferenceNameIterator, error) {
 	var ptr *C.git_reference_iterator
 
@@ -423,7 +423,7 @@ func (i *ReferenceIterator) Names() *ReferenceNameIterator {
 	return &ReferenceNameIterator{i}
 }
 
-// NextName retrieves the next reference name. If the iteration is over,
+// Next retrieves the next reference name. If the iteration is over,
 // the returned error is git.ErrIterOver
 func (v *ReferenceNameIterator) Next() (string, error) {
 	var ptr *C.char
